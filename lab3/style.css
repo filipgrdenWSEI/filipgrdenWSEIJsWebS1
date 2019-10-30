@@ -1,0 +1,25 @@
+body {
+    background: lightgray;
+    z-index: 2;
+}
+
+#canvas {
+    width: 70vw;
+    height: 80vh;
+    margin: 50px auto;
+    background: #ffffff;
+    position: relative;
+}
+
+.brush {
+    width: 10px;
+    height: 10px;
+    background: pink;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+.circle {
+    border-radius: 50%;
+    background: blue;
+}
