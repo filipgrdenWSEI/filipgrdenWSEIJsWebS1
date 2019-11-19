@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sound Record</title>
+    <script src="https://kit.fontawesome.com/e1690fc816.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap&subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="bg">
+    <div class="mask">
+        <div class="wrapper">
+            <div class="instruction">
+                <p>q - Clap</p>
+                <p>w - Boom</p>
+                <p>e - Hithat</p>
+                <p>r - Kick</p>
+                <p>t - Openhat</p>
+                <p>y - Ride</p>
+                <p>u - Snare</p>
+                <p>i - Tink</p>
+                <p>o - Tom</p>
+            </div>
+
+            <audio src="sounds/clap.wav" id="clap"></audio>
+            <audio src="sounds/boom.wav" id="boom"></audio>
+            <audio src="sounds/hihat.wav" id="hihat"></audio>
+            <audio src="sounds/kick.wav" id="kick"></audio>
+            <audio src="sounds/openhat.wav" id="openhat"></audio>
+            <audio src="sounds/ride.wav" id="ride"></audio>
+            <audio src="sounds/snare.wav" id="snare"></audio>
+            <audio src="sounds/tink.wav" id="tink"></audio>
+            <audio src="sounds/tom.wav" id="tom"></audio>
+            <div class="controls-wrap">
+                <div class="controls">
+                    <h3>Live 1</h3>
+                    <button id="live1rec" class="rec-btn" data-play="live1play">Start</button>
+                    <button id="live1play" class="play-btn"><i class="far fa-play-circle"></i></button>
+                </div>
+
+                <div class="controls">
+                    <h3>Live 2</h3>
+                    <button id="live2rec" class="rec-btn" data-play="live2play">Start</button>
+                    <button id="live2play" class="play-btn"><i class="far fa-play-circle"></i></button>
+                </div>
+                <div class="controls">
+                    <h3>Live 3</h3>
+                    <button id="live3rec" class="rec-btn" data-play="live3play">Start</button>
+                    <button id="live3play" class="play-btn"><i class="far fa-play-circle"></i></button>
+                </div>
+                <div class="controls">
+                    <h3>Live 4</h3>
+                    <button id="live4rec" class="rec-btn" data-play="live4play">Start</button>
+                    <button id="live4play" class="play-btn"><i class="far fa-play-circle"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="main.js"></script>
+</body>
+
+</html>
