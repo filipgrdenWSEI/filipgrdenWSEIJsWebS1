@@ -103,10 +103,11 @@ class Sounds {
 const defaultSound = new Sounds();
 
 const buttons  = document.querySelectorAll(".rec-btn");
+
 buttons.forEach(btn => btn.addEventListener("click", makeRecorder));
 function makeRecorder() {
     this.innerHTML = "recording"
     const playBtn = this.getAttribute("data-play");
     const recBtn = this.getAttribute("id");
-    const sound = new Sounds(`#${recBtn}`, `#${playBtn}`, true);
+    new Sounds(`#${recBtn}`, `#${playBtn}`, true);
 }
