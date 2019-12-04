@@ -1,34 +1,47 @@
-  
 document.addEventListener('DOMContentLoaded', appStart)
 
-let canvas
-let ctx
+let canvas,
+    ctx,
+    inputShapeValue,
+    lightnessAmount,
+    canvasWidth,
+    canvasHeight
 
 function appStart() {
-    // get canvas
-    canvas = document.querySelector('#canvas')
-    document
-        .querySelector('#darken')
-        .addEventListener('click',() => darkenImage()) 
-    ctx = canvas.getContext('2d')
-    // ctx.rect(50,50,300,300);
-    // ctx.fill()
-    drawCanvasImage()
+
+    canvasWidth = window.innerWidth - 200;
+    canvasHeight = window.innerHeight;
+
+    canvas = document.querySelector('#canvas');
+    canvas.width = canvasWidth;
+    canvas.height = canvasHeight;
+
+    ctx = canvas.getContext('2d');
+
+    const selectShapeInpt = document.getElementById("shapeInpt")
+
+    document.querySelectorAll(".lightnessBtn")
+        .forEach(btn => btn.addEventListener("click", getLightnessAmount));
+
+    new Draw(canvas, selectShapeInpt);
+    document.getElementById('imageLoader')
+        .addEventListener("change", drawCanvasImage, false);
 }
 
-function drawCanvasImage() {
-    const image = new Image()
-    image.src = 'zdjecie.jpg'
-    image.addEventListener('load', ()=> {
-        ctx.drawImage(image, 0, 0, 800, 600)
-    })
-}
-
-function darkenImage(amount = 30) {
-    const canvasData = ctx.getImageData(0, 0, 800, 600)
-    console.log(canvasData.data[0])
-    for(let i = 0; i<canvasData.data.length; i++) {
-        canvasData.data[i] -= amount
+function drawCanvasImage(e) {
+    const reader = new FileReader();
+    reader.onload = function (event) {
+        const image = new Image()
+        image.onload = function () {
+            ctx.drawImage(image, 0, 0, canvasWidth, canvasHeight)
+        }
+        image.src = event.target.result;
     }
-    ctx.putImageData(canvasData, 0, 0)
+    reader.readAsDataURL(e.target.files[0]);
+}
+
+function getLightnessAmount() {
+    const canvasData = ctx.getImageData(0, 0, canvasWidth, canvasHeight)
+    lightnessAmount = this.getAttribute("data-amount");
+    new Lightness(lightnessAmount, canvasData, ctx);
 }
